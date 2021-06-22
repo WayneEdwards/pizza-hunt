@@ -14,8 +14,10 @@ const commentController = {
             .then(({
                 _id
             }) => {
+                console.log({ _id })
+                console.log(`params ${params.pizzaId}`)
                 return Pizza.findOneAndUpdate({
-                    _id: params.pizzaID
+                    _id: params.pizzaId
                 }, {
                     $push: {
                         comments: _id

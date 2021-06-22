@@ -1,3 +1,4 @@
+const dateFormat = require('../utils/dateFormat');
 const {
     Schema,
     model
@@ -12,7 +13,8 @@ const PizzaSchema = new Schema({
         },
         createdAt: {
             type: Date,
-            default: Date.now
+            default: Date.now,
+            get: (createdAtVal) => dateFormat(createdAtVal)
         },
         size: {
             type: String,
@@ -27,6 +29,7 @@ const PizzaSchema = new Schema({
     }, {
         toJSON: {
             virtuals: true,
+            getters: true
         },
         id: false
     }
